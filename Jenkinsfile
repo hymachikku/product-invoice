@@ -1,29 +1,9 @@
-
 pipeline {
     agent any
-
     stages {
-        stage('Checkout') {
+        stage('Build') { 
             steps {
-                echo 'Source code checkout completed'
-            }
-        }
-
-        stage('Build') {
-            steps {
-                bat 'set'
-            }
-        }
-
-        stage('Test') {
-            steps {
-                 bat 'set'
-            }
-        }
-
-        stage('Package') {
-            steps {
-                bat 'mvn package'
+                sh 'mvn -B -DskipTests clean package' 
             }
         }
     }
